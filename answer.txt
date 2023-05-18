@@ -1,0 +1,31 @@
+We have an array containing both positive and negative values. // [1,4,2,-2,-9,10,2,12,2,-4,-4,-4,-4,2,6,7]
+ In this piece of code we are trying to find peak element and its index and we are pushing it to the output.
+
+Here is how we are doing that:
+1. Initially we are assuming the peak element and index as first element and first index respectively.// peak = array[0] and index = 0
+2. We are declaring and assigning empty array as output. //let output = []
+3. We are then traverse the array from x=1 to array.length as we already define peak element that's why now we are traversing from 1 index.
+   // for(let i = 1; i < array.length; i++)
+4. Now in the first if condition we are checking whether the square of array[x](ie. current element) and array[x-1](previous element) is greater than 0 or not
+   // if(array[x] * array[x-1] > 0)(that tells us that both element has same sign either positive or negative)
+5. If the condition true it will enter the if condition:
+  i) Inside first the if condition it will check for the value of peak whether it is negative and current element is smaller than peak.
+    //if(array[x] < peak && peak < 0)
+    so, we will update peak as new peak which is array[x] and index as new index which is x.
+    //peak = array[x];
+    //index = x  
+    We will get negative peak value
+  ii) and for the second loop it will again check for the value of peak whether it is greater than or equals to 0 (which is positive) and current element is greater than peak.
+    //if(array[x] > peak && peak >= 0)
+    so, we will update peak as new peak which is array[x] and index as new index which is x
+    //peak = array[x];
+    //index = x  
+    We will get positive peak value
+6. But if the condition of point 5th fails it means that adjacent element has different sign then we simply get our peak element and index so we will push that into the output array
+   // output.push([index,peak])    
+   and then again we will update peak and index as current element to check further peak elements.
+   // peak = array[x]
+   // index = x
+7. Repeating point 6 and point 7 for all elements.
+8. and after the loop ends return output will return all the peak values.
+   //output=[ [ 1, 4 ], [ 4, -9 ], [ 7, 12 ], [ 9, -4 ] ]   
